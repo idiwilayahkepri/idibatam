@@ -3495,8 +3495,8 @@ window.eksekusiMutasiStatusAdminOtoritas = function(idMutasi, statusBaruTeks, ka
     // Ã¢Å¡Â¡ FIX CONCATENATE: Memasang backtick (`) pembungkus string URL fetch secara valid
     fetch(`${cleanEndpoint}/proses.php?aksi=update_status_${kategori}_admin`, {
         method: "POST",
-        body: payloadStatus // Sudah sinkron mengirimkan payloadStatus,
-		mode: "cors",              // Memastikan mode CORS aktif lintas domain
+        body: payloadStatus,
+		mode: "cors",              
         credentials: "include"
     })
     .then(res => {
