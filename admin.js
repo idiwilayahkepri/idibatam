@@ -6805,11 +6805,10 @@ window.bukaModal3RincianNeracaPerBulan = function(angkaBulan, namaBulanStr, tahu
     `);
 
     // Ambtil rincian baris dari database via proses.php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_rincian_neraca_bulan&bulan=${angkaBulan}&tahun=${tahunBuku}`{
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_rincian_neraca_bulan&bulan=${angkaBulan}&tahun=${tahunBuku}`,{
 	method: "POST",
-    mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    mode: "cors",              
+    credentials: "include",    
 	})
     .then(res => res.json())
     .then(res => {
