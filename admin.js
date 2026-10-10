@@ -222,8 +222,7 @@ window.menuTemplate=function()
     fetch(endpoint+'proses.php?aksi=get_headline_admin', {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -622,8 +621,7 @@ const listGroupContainer = document.getElementById("mysqlInformasiListGroup");
     fetch(endpoint + 'proses.php?aksi=get_headline_admin', {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(headlineRes => {
@@ -661,8 +659,7 @@ const listGroupContainer = document.getElementById("mysqlInformasiListGroup");
     return fetch(endpoint + 'proses.php?aksi=get_informasi_news&kategori='+kat, {
 	 method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -1149,8 +1146,7 @@ const listGroupContainer = document.getElementById("mysqlPodcastListGroup");
 	fetch(endpoint + 'proses.php?aksi=get_headline_admin', {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(headlineRes => {
@@ -1188,8 +1184,7 @@ const listGroupContainer = document.getElementById("mysqlPodcastListGroup");
     return fetch(endpoint + 'proses.php?aksi=get_podcast_admin&kategori='+kat, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -1716,8 +1711,7 @@ const listGroupContainer = document.getElementById("mysqlGalleryListGroup");
     fetch(endpoint + 'proses.php?aksi=get_headline_admin', {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(headlineRes => {
@@ -1737,8 +1731,7 @@ const listGroupContainer = document.getElementById("mysqlGalleryListGroup");
     return fetch(endpoint + 'proses.php?aksi=get_gallery_admin', {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -2370,8 +2363,7 @@ window.loadDataAntreanIuranMySQL = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_antrean_verifikasi_iuran`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -2549,8 +2541,7 @@ const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
 fetch(`${cleanEndpoint}/proses.php?aksi=get_antrean_verifikasi_iuran_valid`, {
 method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 })
 .then(res => res.json())
 .then(res => {
@@ -2815,7 +2806,7 @@ window.eksekusiSahkanIuranLunasLatarBelakang = function(idIuranTarget,idAnggota)
 	
     fetch(`${cleanEndpoint}/proses.php?aksi=eksekusi_approval_lunas`, {
         method: "POST",
-        body: payloadApprove, // Sudah sinkron mengirimkan payloadApprove,
+        body: payloadApprove // Sudah sinkron mengirimkan payloadApprove,
 		mode: "cors",              
     credentials: "include"
     })
@@ -2932,8 +2923,7 @@ window.loadDataAntreanMutasiValidAdminMySQL = function(kategori) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_antrean_${kategori}_valid_admin`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -3074,8 +3064,7 @@ window.loadDataAntreanMutasiAdminMySQL = function(kategori) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_antrean_${kategori}_admin`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -3264,8 +3253,7 @@ window.bukaModal3lihatdrive = function(no_anggota) {
     fetch(`${cleanEndpoint}/proses.php?aksi=cek_folder_drive_anggota&no_anggota=${no_anggota}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -3495,8 +3483,8 @@ window.eksekusiMutasiStatusAdminOtoritas = function(idMutasi, statusBaruTeks, ka
     // Ã¢Å¡Â¡ FIX CONCATENATE: Memasang backtick (`) pembungkus string URL fetch secara valid
     fetch(`${cleanEndpoint}/proses.php?aksi=update_status_${kategori}_admin`, {
         method: "POST",
-        body: payloadStatus,
-		mode: "cors",              
+        body: payloadStatus // Sudah sinkron mengirimkan payloadStatus,
+		mode: "cors",              // Memastikan mode CORS aktif lintas domain
         credentials: "include"
     })
     .then(res => {
@@ -4603,8 +4591,7 @@ window.bukaPanelNotifikasiKategori=function() {
 	fetch(`${cleanEndpoint}/proses.php?aksi=get_all_notifikasi`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -4837,8 +4824,7 @@ function muatBadgeNotifikasiAdmin() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_jumlah_notif`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(response => {
         if (!response.ok) throw new Error("HTTP error " + response.status);
@@ -4890,8 +4876,7 @@ window.bukaValidasiFotoKeModal3 = function(idUser, idNotif, namaDokter) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_foto_sementara&id_user=${idUser}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -4958,8 +4943,7 @@ window.bukaValidasiProfilKeModal3 = function(idUser, idNotif) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_komparasi_profil&id_user=${idUser}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -5188,8 +5172,7 @@ window.fetchLiveUserOnlineAdminSync = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_user_online`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -5272,8 +5255,7 @@ window.eksekusiFetchUserOnlineModal2Murni = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_user_online`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => {
         if (!res.ok) throw new Error("HTTP error status " + res.status);
@@ -5382,8 +5364,7 @@ window.bukaFormInvoiceUmumSponsorModal2 = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_nomor_invoice_terakhir`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -5520,8 +5501,7 @@ window.bukaModal3LihatRiwayatInvoiceSponsorDinamis = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=list_invoice_umum`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -5692,8 +5672,7 @@ window.bukaModalEditInvoiceSponsor = function(idInv) {
         fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_invoice_umum&id=${idInv}`, {
 		method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 		})
         .then(res => res.json())
         .then(res => {
@@ -5933,8 +5912,7 @@ window.menuAdmin = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=list_master_admin`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -6028,8 +6006,7 @@ window.menuAdmin = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=list_master_admin`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -6342,8 +6319,7 @@ window.menuNeracaPendapatan = function(tahunPilihan) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_neraca_bulanan&tahun=${tahunBukuAktif}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -6465,8 +6441,7 @@ window.bukaModal3JurnalKronologisLoss = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_jurnal_transaksi_loss`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -6715,8 +6690,7 @@ window.bukaModal3RincianNeracaPerBulan = function(angkaBulan, namaBulanStr, tahu
     fetch(`${cleanEndpoint}/proses.php?aksi=get_rincian_neraca_bulan&bulan=${angkaBulan}&tahun=${tahunBuku}&tanggal=${tanggalAktif}`,{
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -6805,10 +6779,10 @@ window.bukaModal3RincianNeracaPerBulan = function(angkaBulan, namaBulanStr, tahu
     `);
 
     // Ambtil rincian baris dari database via proses.php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_rincian_neraca_bulan&bulan=${angkaBulan}&tahun=${tahunBuku}`,{
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_rincian_neraca_bulan&bulan=${angkaBulan}&tahun=${tahunBuku}`{
 	method: "POST",
-    mode: "cors",              
-    credentials: "include",    
+    mode: "cors",              // Memastikan mode CORS aktif lintas domain
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -6979,8 +6953,7 @@ window.loadDataSuratMasukMySQL = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_data_surat_masuk`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -7427,8 +7400,7 @@ window.loadDanRenderMatriksKalenderAgenda = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_data_agenda_kegiatan&bulan=${window.currentAgendaMonth + 1}&tahun=${window.currentAgendaYear}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	
 	})
     .then(res => res.json())
@@ -7649,8 +7621,7 @@ window.bukaModal3LihatDetailAgendaDirect = function(idAgendaTarget) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_agenda_spesifik&id=${idAgendaTarget}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -7767,8 +7738,7 @@ window.loadDataPresensiPesertaRapatAjax = function(idAgenda) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_list_peserta_rapat&id_agenda=${idAgenda}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -8118,8 +8088,7 @@ window.eksekusiAdminPulangKePanelUtama = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=hapus_session_impersonate_server`, {
         method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
     })
     .then(res => {
         if (!res.ok) throw new Error("HTTP error dari server: " + res.status);
@@ -8203,8 +8172,7 @@ window.loadDataKontakPersonilMySQL = function() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_data_kontak_personil_json`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -8907,8 +8875,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
     fetch(`${cleanEndpoint}/proses.php?aksi=logout_destroy_session`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(data => {
