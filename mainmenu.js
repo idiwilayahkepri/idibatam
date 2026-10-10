@@ -393,7 +393,7 @@ if (statusTeks === "lunas") {
     statusbelumlunas="belum";
     // Belum Lunas / Default awal
     const sessionLoginCheck = localStorage.getItem("idi_is_logged_in");
-    const adminLoginCheck = sessionStorage.getItem("admin_is_logged");
+    const adminLoginCheck = localStorage.getItem("admin_is_logged");
     if (sessionLoginCheck === "true" || adminLoginCheck==="true") {
         statusBadge = `
             <a href="#" class="badge bg-danger-subtle text-danger px-2 py-1 rounded small fw-bold text-decoration-none d-inline-flex align-items-center gap-1" 
@@ -441,7 +441,7 @@ if (statusTeks === "lunas") {
                     labelPeriodeTampil = `${cleanLabelPeriode} <small class="text-muted italic">(Inherited)</small>`;
                     // Tautan dinamis klik Belum Lunas menuju form pendaftaran modal2 membawa context utuh
                     const sessionLoginCheck = localStorage.getItem("idi_is_logged_in");
-                    const adminLoginCheck = sessionStorage.getItem("admin_is_logged");
+                    const adminLoginCheck = localStorage.getItem("admin_is_logged");
                     
                     if (sessionLoginCheck === "true" || adminLoginCheck==="true") {
                         statusBadge = `
@@ -671,7 +671,7 @@ window.bukaModal3AplikasiCashBertahapMandiri = function(idAnggota, namaDokter, t
             
             // Berikan lencana warna sesuai kondisi verifikasi admin
             if (bacaTeks === '0' && stTeks === 'cash bertahap') {
-                if(sessionStorage.getItem('admin_is_logged')==="true")
+                if(localStorage.getItem('admin_is_logged')==="true")
                 {
                 statusBadgeBulan = `<span class="badge bg-warning text-dark px-2 py-1 rounded-pill small fw-bold" onclick="bukaModal3VerifikasiCashBertahap(${dataTransaksiBulanIni.iuran_id})" style="cursor:pointer"><i class="bi bi-hourglass-split me-1"></i>Menunggu Verifikasi</span>`;
                 }
@@ -1162,7 +1162,7 @@ window.eksekusiUploadStrukKeGoogleDriveGas = function(idBarisIuran) {
                 }
             
         
-            if(sessionStorage.getItem("admin_is_logged")==="true")
+            if(localStorage.getItem("admin_is_logged")==="true")
             {
                 const imgPreview = document.getElementById("imgPreviewStrukVerif");
                 if (imgPreview) imgPreview.src = URL.createObjectURL(fileTarget);
