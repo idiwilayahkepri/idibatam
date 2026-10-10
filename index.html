@@ -1,1 +1,678 @@
-UNDERCONSTRUCTION
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="Abdul Gamal">
+    <meta name="generator" content="Gml Project 1.0">
+    <meta name="title" content="IDI BATAM"/>
+	<meta name="description" content="Alamat: Ruko Trafalgar No. 11, Taman Dutamas, Batam, Telp./Fax. (0778) 468808" />
+    <title>IDI BATAM</title>
+    <link rel='icon' id='icon'/>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        :root {
+            --primary-color: #0f5132;
+            --secondary-color: #198754;
+            --light-bg: #f8f9fa;
+        }
+		
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .bg-idi {
+            background-color: #0b6623 !important; /* Hijau Medis IDI */
+        }
+        .text-idi {
+            color: #0b6623 !important;
+        }
+        .btn-idi {
+            background-color: #0b6623;
+            color: white;
+        }
+        .btn-idi:hover {
+            background-color: #084d1a;
+            color: white;
+        }
+        .navbar {
+            background-color: var(--primary-color) !important;
+			z-index: 1050;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-brand,.dropdown-item {
+            color: #ffffff !important;
+        }
+        .dropdown-item:hover {
+            color: #d1e7dd !important;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        .dropdown-menu {
+            background-color: var(--primary-color);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .drawer-item {
+            text-decoration: none;
+            color: #212529;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 10px;
+            border-radius: 12px;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+        }
+        .drawer-item:hover {
+            background-color: #e8f5e9;
+            transform: translateY(-3px);
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .drawer-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+        }
+        .avatar-leader {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        /* CSS Masonry Layout */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+            width: 100%;
+        }
+        .masonry-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+		 .card-info {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+        .card-info:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+		        /* Custom Nav Tabs Styling inside Modal */
+        .modal-tabs .nav-link {
+            color: #6c757d;
+            font-weight: 600;
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 0.75rem 0;
+        }
+        .modal-tabs .nav-link.active {
+            color: #0b6623 !important;
+            background: transparent;
+            border-bottom: 3px solid #0b6623;
+        }
+        /* =========================================================================
+   ðŸ“… CALENDAR INTEL ENGINE STYLE OVERRIDE - IDI BATAM
+   ========================================================================= */
+
+/* Paksa kontainer hari kalender agar menggelar baris secara membujur/fleksibel */
+#gridKotakHariKalenderAgenda {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Mengunci ukuran kotak hari tepat 1/7 bagian dari lebar bodi (100% / 7 = 14.28%) */
+#gridKotakHariKalenderAgenda .col, 
+.container py-2 text-center .row .col {
+    flex: 0 0 14.285% !important;
+    max-width: 14.285% !important;
+    box-sizing: border-box;
+}
+
+/* Sembunyikan scrollbar bawaan pada kotak hari tetapi fungsi scroll vertikal tetap aktif */
+#gridKotakHariKalenderAgenda .col::-webkit-scrollbar {
+    width: 3px;
+}
+#gridKotakHariKalenderAgenda .col::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* Responsivitas untuk layar ponsel kecil (Handphone) */
+@media (max-width: 768px) {
+    #gridKotakHariKalenderAgenda .col {
+        min-height: 95px !important; /* Berikan ruang lebih tinggi di ponsel agar teks jam muat */
+    }
+    #gridKotakHariKalenderAgenda .col span {
+        font-size: 0.75rem;
+    }
+}
+
+		
+/* Menghilangkan border bawaan browser dan membuat dialog fullscreen */
+#fsDialog {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+}
+
+/* Mengatur tampilan backdrop belakang popup */
+#fsDialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  padding: 0 10px 0 10px;
+}
+
+
+	.admin-drawer-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
+.admin-drawer-item:hover {
+    background-color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-color: #0b6623;
+}
+.admin-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+.admin-drawer-item:hover .admin-icon-box {
+    transform: scale(1.1);
+}
+.admin-drawer-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #495057;
+    text-align: center;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.admin-drawer-item:hover .admin-drawer-text {
+    color: #0b6623;
+}
+.fs-7 {
+    font-size: 0.72rem !important;
+}
+        @media (max-width: 1199px) {
+            .masonry-grid { column-count: 3; }
+        }
+        @media (max-width: 991px) {
+            .masonry-grid { column-count: 2; }
+        }
+        @media (max-width: 575px) {
+            .masonry-grid { column-count: 1; }
+        }
+        .card-branch {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .card-branch:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        footer {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR RESPONSIF DENGAN DROPDOWN -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-idi sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><img id="logo" src="https://lh3.googleusercontent.com/d/1o_mDEAegaq8u7vXB6q8wSxa3nShI7T5C?authuser=1/view" style="width: 40px; height: 40px;"> IDI BATAM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Dropdown Layanan Anggota -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="dropdownLayanan" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Layanan Anggota
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownLayanan" id="layanananggota">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-left-right me-2"></i>Mutasi Anggota</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            
+                        </ul>
+                    </li>
+                    <!-- Dropdown Informasi & Publikasi -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Informasi & Publikasi
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownInfo" id="informasipenting">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-newspaper me-2"></i>Berita Medis</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kegiatan
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownInfo" id="kegiatananggota">
+                            <li><a class="dropdown-item" onclick="bukaModal2ListBaktiSosial()" style="cursor:pointer"><i class="bi bi-newspaper me-2"></i>Bakti Sosial</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Organisasi
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownInfo" id="organisasianggota">
+                            <li><a class="dropdown-item" onclick="listpengurus()" style="cursor:pointer"><i class="bi bi-newspaper me-2"></i>Pengurus</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-item dropdown" id="icon_admin">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear fs-2x "></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" nohref="#" style="cursor:pointer"><i class="bi bi-shield-shaded me-2"></i><span id="admin">Admin</span></a></li>
+                        </ul>
+					</li>
+                </ul>
+                
+                <!-- CONTAINER SIMULASI LOGIN (DINAMIS) -->
+				<div class="d-flex justify-content-center justify-content-lg-end align-items-center mt-3 mt-lg-0" id="loginContainer">
+                    <!-- Tombol Login Awal -->
+                    <button class="btn btn-outline-light d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="bi bi-person-circle"></i> Login Anggota
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <!-- HERO SECTION DENGAN LOGO RESPONSIF (MOBILE DI ATAS, DESKTOP DI SAMPING) -->
+<header class="hero-section py-5 mb-4 text-white" style="background: linear-gradient(135deg, #0b6623 0%, #064015 100%);">
+    <div class="container">
+        <!-- Menggunakan Flexbox: Kolom vertikal pada mobile, Baris horizontal pada desktop (md) -->
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3 gap-md-4">
+            
+            <!-- 1. Kontainer Logo: Otomatis di atas (order-1) pada mobile/desktop -->
+            <div class="hero-logo-box order-1">
+                <!-- Ilustrasi Logo Medis IDI Bulat Profesional -->
+                <img src="https://lh3.googleusercontent.com/d/1o_mDEAegaq8u7vXB6q8wSxa3nShI7T5C?authuser=1/view" 
+                     alt="Logo IDI Batam" 
+                     class="img-fluid bg-white rounded-circle p-0 shadow" 
+                     style="width: 100px; height: 100px; object-fit: contain;">
+            </div>
+            
+            <!-- 2. Kontainer Teks Utama: Otomatis di bawah logo (order-2) pada mobile -->
+            <div class="hero-text-box order-2 text-center text-md-start">
+                <h2 class="display-6 fw-bold mb-1" style="letter-spacing: 0.5px;">
+                    IKATAN DOKTER INDONESIA
+                </h2>
+                <p class="lead mb-0 text-white-50 fw-normal" style="font-size: 1.1rem;">
+                    Profesional, Integritas, dan Mengabdi untuk Masyarakat
+                </p>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+    <main class="container">
+        <!-- SECTION 1: KATA PENGANTAR (col-md-6) & APPLICATION DRAWER (col-md-6) -->
+        <section class="row g-4 mb-5">
+            <!-- Kata Pengantar Ketua -->
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+                    <div class="card-body">
+<!-- KATA PENGANTAR BRANDING RESPONSIF (MOBILE DI ATAS, DESKTOP DI SAMPING) -->
+<div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start mb-4">
+    
+    <!-- 1. FOTO KETUA: Otomatis di atas pada mobile, otomatis ada margin-bottom (mb-3) sebelum mendeteksi desktop (mb-md-0) -->
+    <div class="rounded-circle bg-secondary-subtle p-1 mb-3 mb-md-0 me-0 me-md-3 shadow-sm" style="width: 80px; height: 80px; overflow: hidden; flex-shrink: 0;">
+        <img src="https://lh3.googleusercontent.com/d/18tKXLBmljI-G1z_-76EPWwVMZnTMStBe" 
+             alt="Foto Ketua IDI Batam" 
+             class="rounded-circle img-fluid" 
+             style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    
+    <!-- 2. TEKS JABATAN: Otomatis berpusat di tengah pada mobile, rata kiri di desktop -->
+    <div>
+        <h5 class="card-title fw-bold mb-0 text-success" style="font-size: 1.2rem;">Kata Pengantar</h5>
+        <p class="text-muted small mb-0 fw-semibold">Ketua IDI Cabang Kota Batam</p>
+    </div>
+
+</div>
+
+
+                        <p class="card-text text-muted justify-content-center" style="text-align: justify; line-height: 1.7;">
+                            "Selamat datang di portal resmi IDI Cabang Batam. Melalui platform digital ini, kami berkomitmen untuk meningkatkan efisiensi layanan administrasi profesi bagi seluruh sejawat dokter, serta menyajikan transparansi informasi kesehatan, edukasi medis berkelanjutan berkelanjutan (CPD), demi pengabdian kesehatan masyarakat Batam yang lebih prima."
+                        </p>
+                        <hr class="text-muted opacity-25 my-3">
+                        <p class="fw-semibold text-success mb-0">dr. Dino G Prihadianto, SpOG M,Kes, SH, MH, FMAS, FAGS, FISOG</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Drawer -->
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-4"><i class="bi bi-grid-3x3-gap-fill text-success me-2"></i>Layanan Cepat (Drawer)</h5>
+                        
+<!-- Wadah Grid untuk Kartu Ikon Menu Dinamis MySQL -->
+<div class="row g-3" id="drawerMenuContainer">
+    <div class="col-12 text-center py-4 text-muted small">
+        <span class="spinner-border spinner-border-sm text-secondary me-2" role="status"></span>
+        Memuat layanan...
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INFO SECTION MASONRY WITH JAVASCRIPT LOOPING -->
+        <section class="container mb-5">
+                        
+            <!-- Wadah Grid Masonry -->
+            <div id="masonryContainer" class="masonry-grid">
+                <!-- Elemen Card akan disuntikkan secara dinamis di sini oleh JavaScript -->
+            </div>
+        </section>
+    </main>
+	<!-- MODAL GENERAL FULLSCREEN REUSABLE -->
+    <div class="modal fade" id="generalFullscreenModal" data-bs-backdrop="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header bg-idi text-white">
+<h5 class="modal-title fw-bold" id="generalModalTitle">Konten Umum</h5>
+
+<!-- Wadah baru untuk tombol-tombol di sebelah kanan -->
+<div class="ms-auto d-flex align-items-center gap-2">
+    <span id="btnadmin"></span>
+    <button type="button" class="btn-close btn-close-white" id="tutup1" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+
+                </div>
+                <div class="modal-body p-4" id="generalModalBody">
+                    <!-- Isi konten umum dinamis di-render via JavaScript -->
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup Jendela</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- SECOND MODAL (MODAL KEDUA SERBAGUNA) -->
+<div class="modal fade" id="secondAdminModal" data-bs-backdrop="false" tabindex="-1" aria-hidden="true" style="z-index: 1060;">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen"> 
+        <div class="modal-content shadow-lg border-0 rounded-4">
+            <div class="modal-header bg-success text-white py-3 rounded-top-4">
+                <h5 class="modal-title fw-bold" id="secondModalTitle"><i class="bi bi-folder2-open me-2"></i>Detail Modul</h5>
+                <button type="button" class="btn-close btn-close-white" id="tutupmodal2" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" href="#generalFullscreenModal"></button>
+            </div>
+            <div class="modal-body p-4" id="secondModalBody">
+                <!-- Konten dinamis dari submenu akan di-render di sini -->
+            </div>
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary px-4 fw-semibold rounded-3" data-bs-dismiss="modal">Tutup Jendela</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<dialog id="fsDialog" style="overflow:hidden; width:100vw; height:100vh; max-width:100vw; max-height:100vh; border:none; padding:0; margin:0;">
+  
+  <!-- Header tetap fixed di atas -->
+  <div class="content bg-success text-white py-3 rounded-top-4" id="headerModal" style="position:fixed; top:0; width:100%; z-index:2; height: 60px; padding-left: 20px; padding-right: 20px;">
+    <h5 class="fw-bold m-0 d-inline-block" id="titlepopup">
+      <i class="bi bi-folder2-open me-2"></i> Detail Modul
+    </h5>
+    <button id="closeBtn" type="button" class="btn-close btn-close-white float-end"></button>
+  </div>
+
+  <!-- Body modal sekarang tingginya otomatis menghitung sisa layar (100vh dikurangi tinggi header 60px) -->
+  <div id="bodimodal3" style="position:absolute; width:100%; height: calc(100vh - 100px); padding:20px; margin-top:60px; overflow-y:auto; box-sizing: border-box;">
+    Konten Anda di sini... yang sangat panjang ke bawah akan otomatis memunculkan scroll di area ini saja tanpa merusak header.
+  </div>
+
+</dialog>
+
+    <!-- MODAL POPUP FORM LOGIN -->
+ <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-idi text-white">
+                <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="bi bi-lock-fill me-2"></i>Akses Anggota IDI</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <!-- Nav Tabs di Dalam Modal -->
+                <ul class="nav nav-tabs mb-4" id="modalTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-pane" type="button" role="tab"><i class="bi bi-box-arrow-in-right me-1"></i>Login</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-pane" type="button" role="tab"><i class="bi bi-person-plus me-1"></i>Registrasi</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="forgot-tab" data-bs-toggle="tab" data-bs-target="#forgot-pane" type="button" role="tab"><i class="bi bi-key me-1"></i>Lupa Sandi</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="modalTabContent">
+                    <!-- Tab Pane: LOGIN -->
+                    <div class="tab-pane fade show active" id="login-pane" role="tabpanel" aria-labelledby="login-tab">
+                        <!-- Wadah Pesan Error Dinamis -->
+                        <div id="errorAlertContainer"></div>
+
+                        <form id="formSimulasiLogin">
+                            <div class="mb-3">
+                                <label for="inputWA" class="form-label fw-semibold text-secondary">Nomor WhatsApp</label>
+						   <div class="input-group">
+                                <span class="input-group-text bg-light fw-bold text-secondary">+62</span>
+                                <input type="tel" class="form-control" id="inputWA" placeholder="811000000" pattern="[0-9]+" required>
+                           </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="inputPassword" class="form-label fw-semibold text-secondary">Kata Sandi</label>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                            </div>
+                            <button type="submit" class="btn btn-idi w-100 py-2 fw-bold">Login</button>
+                        </form>
+                    </div>
+<!-- Tab Pane: REGISTRASI -->
+<div class="tab-pane fade" id="register-pane" role="tabpanel" aria-labelledby="register-tab">
+    <div id="registerAlertContainer"></div>
+
+    <form id="formSimulasiRegistrasi">
+        <!-- Input Nama, WA, & Email (Tetap Dipertahankan dari Versi Sebelumnya) -->
+        <div class="mb-3">
+            <label for="regNama" class="form-label fw-semibold text-secondary">Nama Lengkap & Gelar</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light text-muted"><i class="bi bi-person-vcard"></i></span>
+                <input type="text" class="form-control" id="regNama" placeholder="dr. Nama Anda, Sp.X" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="regWA" class="form-label fw-semibold text-secondary">Nomor WhatsApp</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light fw-bold text-secondary">+62</span>
+                <input type="tel" class="form-control" id="regWA" placeholder="811000000" pattern="[0-9]+" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="regEmail" class="form-label fw-semibold text-secondary">Alamat Email Aktif</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control" id="regEmail" placeholder="nama.dokter@gmail.com" required>
+            </div>
+        </div>
+
+        <!-- BARU: Kolom Buat Kata Sandi -->
+        <div class="mb-3">
+            <label for="regPassword" class="form-label fw-semibold text-secondary">Buat Kata Sandi</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light text-muted"><i class="bi bi-shield-lock"></i></span>
+                <input type="password" class="form-control" id="regPassword" placeholder="Minimal 6 karakter" minlength="6" required>
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('regPassword', this)">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- BARU: Kolom Konfirmasi Kata Sandi -->
+        <div class="mb-3">
+            <label for="regConfirmPassword" class="form-label fw-semibold text-secondary">Konfirmasi Kata Sandi</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light text-muted"><i class="bi bi-shield-check"></i></span>
+                <input type="password" class="form-control" id="regConfirmPassword" placeholder="Ulangi kata sandi Anda" required>
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('regConfirmPassword', this)">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sistem Visual Captcha Matematika -->
+        <div class="mb-4">
+            <label for="regCaptchaInput" class="form-label fw-semibold text-secondary">Verifikasi Keamanan (Captcha)</label>
+            <div class="d-flex align-items-center gap-3 mb-2">
+                <div class="bg-light border rounded px-3 py-2 fw-bold text-dark fs-5 shadow-sm" id="captchaBox" style="letter-spacing: 3px; font-family: monospace;">0 + 0 = ?</div>
+                <button type="button" class="btn btn-sm btn-outline-secondary p-2 rounded-circle" id="btnRefreshCaptcha"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <input type="number" class="form-control" id="regCaptchaInput" placeholder="Hitung hasil di atas" required>
+        </div>
+
+        <button type="submit" class="btn btn-idi w-100 py-2 fw-bold">Daftar Sekarang</button>
+    </form>
+</div>
+
+
+
+                    <!-- Tab Pane: LUPA SANDI -->
+                    <div class="tab-pane fade" id="forgot-pane" role="tabpanel" aria-labelledby="forgot-tab">
+                        <p class="small text-muted mb-3">Masukkan Alamat Email terdaftar untuk menerima tautan penyetelan ulang sandi baru.</p>
+						<div id="alert-box" class="alert" style="color:red;font-weight:bold;text-decoration:underline"></div>
+						   <form id="form-lupa-password">
+							<div class="mb-3">
+                           <label class="form-label fw-semibold text-secondary">Masukkan Alamat Email Anda:</label>
+                           <input type="email" id="email" name="email" class="form-control" required placeholder="contoh@email.com">
+						   </div>
+                           <button type="submit" id="btn-submit" class="btn btn-idi w-100 py-2 fw-bold">Kirim Tautan Reset</button>
+                           </form>
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1 small">&copy; 2026 Ikatan Dokter Indonesia (IDI) Cabang Kota Batam. All Rights Reserved.</p>
+            <p class="mb-0 text-muted xs-small" style="font-size: 0.8rem;">Dibuat menggunakan Bootstrap 5 & JavaScript Masonry Grid Layout.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.3 Bundle with Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JAVASCRIPT LOOPING UNTUK CARD INFO -->
+    <script>
+    $('#icon').attr('href','https://lh3.googleusercontent.com/d/1o_mDEAegaq8u7vXB6q8wSxa3nShI7T5C?authuser=1/view')
+          // Ambil URL dari file teks global
+fetch('url.txt')
+    .then(response => response.text())
+    .then(baseUrl => {
+        const cleanUrl = baseUrl.trim(); 
+
+        // ==================== SCRIPT 1 (Index) ====================
+        const targetScript1 = document.createElement('script');
+        targetScript1.id = 'global-script-index';
+        targetScript1.type = 'module';
+        targetScript1.crossOrigin = 'anonymous';
+        targetScript1.src = `${cleanUrl}/index.js`; 
+
+        // ==================== SCRIPT 2 (Admin) ====================
+        const targetScript2 = document.createElement('script');
+        targetScript2.id = 'global-script-admin';
+        targetScript2.type = 'module';
+        targetScript2.crossOrigin = 'anonymous';
+        targetScript2.src = `${cleanUrl}/admin.js`; 
+        
+		// ==================== SCRIPT 2 (Admin) ====================
+        const targetScript3 = document.createElement('script');
+        targetScript3.id = 'global-script-user';
+        targetScript3.type = 'module';
+        targetScript3.crossOrigin = 'anonymous';
+        targetScript3.src = `${cleanUrl}/mainmenu.js`; 
+		
+        // ==================== TEMPEL KE HEAD ====================
+        document.head.appendChild(targetScript1);
+        document.head.appendChild(targetScript2);
+        document.head.appendChild(targetScript3);
+		
+        console.log(`Script 1 dimuat dari: ${targetScript1.src}`);
+        console.log(`Script 2 dimuat dari: ${targetScript2.src}`);
+    })
+    .catch(error => console.error('Gagal memuat URL:', error));
+     
+    </script>
+</body>
+</html>UNDERCONSTRUCTION
