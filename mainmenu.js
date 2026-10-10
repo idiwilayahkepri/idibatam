@@ -195,8 +195,7 @@ window.eksekusiFetchIuranMurni = function(nomorTelpon) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_pencarian_iuran&telpon=${encodeURIComponent(nomorTelpon)}`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -845,8 +844,7 @@ window.lihatAlasanDitolakCashBertahap = function(iuran_id,statusbaca) {
 	{
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -955,8 +953,7 @@ window.bukaModal3VerifikasiCashBertahap = function(iuran_id) {
 	{
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -2371,8 +2368,7 @@ if(subKategori==="fellow") { subKategorix=subKategori+"ship"; uckatx=uckat+"ship
     fetch(`${cleanEndpoint}/proses.php?aksi=get_pencarian_${subKategori}&telpon=${encodeURIComponent(nomorTelpon)}`,{
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -4379,8 +4375,7 @@ window.bukaModal2ListBaktiSosial = function() {
  fetch(`${cleanEndpoint}/proses.php?aksi=get_list_baksos`,{
  method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
  })
     .then(res => res.json())
     .then(res => {
@@ -4496,8 +4491,7 @@ window.bukaModal3DetailBaktiSosialPeserta = function (idSeminarBaksos) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_baksos_peserta&id=${idSeminarBaksos}`, {
 	method: "POST",
     mode: "cors",              // Memastikan mode CORS aktif lintas domain
-    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
-    body: payload
+    credentials: "include"
 	})
         .then(res => res.json())
         .then(res => {
@@ -4715,8 +4709,7 @@ window.bukaModal3DetailBaktiSosialDirect = function(idSeminarBaksos) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_baksos&id=${idSeminarBaksos}`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -4782,8 +4775,7 @@ window.generateMainMenuDropdownHtml = function(currentTitleText) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_navmenu`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -5080,8 +5072,7 @@ if (navContainer4) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_navmenu`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",   
-    body: payload
+    credentials: "include"
 	})
     .then(response => {
         if (!response.ok) {
