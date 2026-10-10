@@ -2815,7 +2815,7 @@ window.eksekusiSahkanIuranLunasLatarBelakang = function(idIuranTarget,idAnggota)
 	
     fetch(`${cleanEndpoint}/proses.php?aksi=eksekusi_approval_lunas`, {
         method: "POST",
-        body: payloadApprove // Sudah sinkron mengirimkan payloadApprove,
+        body: payloadApprove, // Sudah sinkron mengirimkan payloadApprove,
 		mode: "cors",              
     credentials: "include"
     })
