@@ -8953,7 +8953,6 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
 		})
         .then(res => res.json())
         .then(res => {
-			alert(res.status);
             if (res.status === 'success') {
                 const kelompokMenu = res.data;
                 let htmlDrawer = "";
