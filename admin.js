@@ -8724,6 +8724,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
         fetch(endpoint + "admin.php?aksi=get_mainmenu")
         .then(res => res.json())
         .then(res => {
+			alert(res.status);
             if (res.status === 'success') {
                 const kelompokMenu = res.data;
                 let htmlDrawer = "";
