@@ -8946,7 +8946,11 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
 
         const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
          
-        fetch(cleanEndpoint + "/admin.php?aksi=get_mainmenu")
+        fetch(cleanEndpoint + "/admin.php?aksi=get_mainmenu", {
+			method: "POST",
+    mode: "cors",              // Memastikan mode CORS aktif lintas domain
+    credentials: "include", 
+		})
         .then(res => res.json())
         .then(res => {
 			alert(res.status);
