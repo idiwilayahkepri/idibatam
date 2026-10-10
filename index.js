@@ -36,7 +36,12 @@ function periksaSesiLogin() {
 				if (idUser) {
             const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
             
-            fetch(`${cleanEndpoint}/proses.php?aksi=get_avatar_navigasi&id_user=${idUser}`)
+            fetch(`${cleanEndpoint}/proses.php?aksi=get_avatar_navigasi&id_user=${idUser}`, {
+			method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+			})
             .then(res => res.json())
             .then(res => {
                 if (res.status === "success" && res.fotoprofil) {
@@ -69,9 +74,11 @@ function prosesLogout(e) {
 
     const cleanEndpoint = typeof endpoint !== 'undefined' ? endpoint.replace(/\/*\$/, '') : '';
 
-    // 1. ðŸ”¥ JALANKAN PENGHANCURAN SESSION SERVER: Tembak proses.php di latar belakang via POST
     fetch(`${cleanEndpoint}/proses.php?aksi=eksekusi_logout_total_server`, {
-        method: "POST"
+		method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
     })
     .then(res => {
         if (!res.ok) throw new Error("HTTP error dari server: " + res.status);
@@ -124,9 +131,12 @@ function muatDataHeadlineMasonry() {
 
     // Bersihkan garis miring (slash) ganda di ujung URL endpoint secara otomatis
     const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
-
-    // Menarik data headline langsung dari server PHP proses.php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_headline`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_headline`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(response => {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
@@ -293,9 +303,13 @@ function bukaModalFullscreenProfil(nama) {
 
     // Bersihkan slash berlebih di ujung URL config secara otomatis jika ada
     const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
-   
-    // Lakukan pemanggilan FETCH AJAX ke backend proses.php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_profil&whatsapp=${userWA}`)
+
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_profil&whatsapp=${userWA}`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(response => {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
@@ -454,7 +468,9 @@ function bukaModalFullscreenProfil(nama) {
                             // JALUR 2: Kirim ID File Google Drive yang sukses terbentuk menuju tabel anggota MySQL
                             return fetch(`${cleanEndpoint}/proses.php?aksi=update_id_foto_anggota`, {
                                 method: "POST",
-                                body: payloadMySQL
+                                body: payloadMySQL,
+                                mode: "cors",              
+                                credentials: "include"
                             });
                         } else {
                             throw new Error(gasRes.message);
@@ -572,12 +588,15 @@ if (!window.globalHeadlineWebsiteCache) return;
                 </div>
             `;
 
-			
-			// Eksekusi pemanggilan AJAX internal menuju proses.php untuk memuat daftar album di panel kanan (col-md-4)
             const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
             const rightSidebarContainer = document.getElementById("phpSidebarRecommendationArea");
 
-            fetch(`${cleanEndpoint}/proses.php?aksi=get_gallery_admin`)
+            fetch(`${cleanEndpoint}/proses.php?aksi=get_gallery_admin`,{
+			method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+			})
             .then(response => response.json())
             .then(res => {
                 if (!rightSidebarContainer) return;
@@ -717,7 +736,12 @@ generalBody.innerHTML = `
             aksiApiUrl = "get_podcast_admin"; // Pindah ke rumpun tabel sosial_media
         }
 
-        fetch(`${cleanEndpoint}/proses.php?aksi=${aksiApiUrl}&kategori=${info.kategori}`)
+        fetch(`${cleanEndpoint}/proses.php?aksi=${aksiApiUrl}&kategori=${info.kategori}`,{
+		method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+		})
         .then(response => response.json())
         .then(sidebarRes => {
 
@@ -887,7 +911,9 @@ formLogin.addEventListener("submit", function(event) {
 
     fetch(endpoint+'proses.php?aksi=login', {
         method: 'POST',
-        body: formData
+        body: formData,
+    mode: "cors",              
+    credentials: "include"
     })
     .then(response => response.json())
     .then(data => {
@@ -919,7 +945,12 @@ window.updateKontenKiriModalDirect = function(idTarget, asalTabel) {
     let aksiUrl = "get_informasi_news";
     if (asalTabel === "podcast" || asalTabel === "youtube") { aksiUrl = "get_podcast_admin"; }
 
-    fetch(`${cleanEndpoint}/proses.php?aksi=${aksiUrl}&id_tunggal=${idTarget}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=${aksiUrl}&id_tunggal=${idTarget}`,{
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         areaKontenKiri.style.opacity = "1";
@@ -1006,7 +1037,12 @@ let isPhpCaptchaActive = false;
 
 function buatCaptchaBaru() {
     // Mengambil soal captcha dari server PHP jika tersedia
-    fetch(endpoint+'proses.php?aksi=get_captcha')
+    fetch(endpoint+'proses.php?aksi=get_captcha',{
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(response => response.json())
     .then(data => {
         document.getElementById("captchaBox").innerText = data.soal;
@@ -1014,7 +1050,6 @@ function buatCaptchaBaru() {
         isPhpCaptchaActive = true; // Tandai bahwa server PHP aktif merespons
     })
     .catch(() => {
-        // FALLBACK LOKAL: Jika proses.php offline/tidak terjangkau, buat hitungan lokal agar tidak macet
         isPhpCaptchaActive = false;
         let angkaPertama = Math.floor(Math.random() * 9) + 1;
         let angkaKedua = Math.floor(Math.random() * 9) + 1;
@@ -1072,7 +1107,9 @@ formRegistrasi.addEventListener("submit", function(event) {
  	
     fetch(endpoint+'proses.php?aksi=register', {
         method: 'POST',
-        body: formData
+        body: formData,
+        mode: 'cors',              
+        credentials: 'include'  
     })
     .then(response => response.json())
     .then(data => {
@@ -1096,7 +1133,7 @@ formRegistrasi.addEventListener("submit", function(event) {
     })
     .catch(error => {
 		console.error("Detail Error Jaringan:", error);
-        // Pesan simulasi lokal ini hanya akan keluar jika koneksi ke proses.php benar-benar terputus/gagal total
+
         registerAlertContainer.innerHTML = `
             <div class="alert alert-success py-3 small" role="alert">
                 <i class="bi bi-check-circle-fill me-2"></i>
@@ -1175,7 +1212,12 @@ function muatSatuFotoAcakHeadlineDrive() {
     const googleAppsScriptWebGroupUrl = "https://script.google.com/macros/s/AKfycbxKEXAM5VW6fRieoMuRLK-sqqtUomP-cnLXrmu9K4ufMGJIL0UxMlVToi56-OEasiq1/exec";
 
     // 2. FETCH JALUR 1: Membaca repositori data headline untuk membedah kode Drive milik ID 7
-    fetch(endpoint + 'proses.php?aksi=get_headline_admin')
+    fetch(endpoint + 'proses.php?aksi=get_headline_admin', {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(headlineRes => {
 		
@@ -1290,8 +1332,12 @@ function loadInformasiKontakSekretariatUser() {
 
     if (!kontainerTargetGrid) return;
 
-    // ðŸ’¡ TAHAP 1: Ambil data kontak personil resmi dari peladen proses.php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_informasi_kontak_publik`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_informasi_kontak_publik`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => {
         if (!res.ok) throw new Error("HTTP error status peladen: " + res.status);
         return res.json();
