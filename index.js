@@ -251,7 +251,9 @@ bodyElement.innerHTML = adminlogin;
 
             fetch(endpoint+"admin_login.php?aksi=proses_login_admin", {
                 method: "POST",
-                body: formPayload
+                body: formPayload,
+				mode: 'cors',
+                credentials: 'include'
             })
             .then(res => res.json())
             .then(data => {
