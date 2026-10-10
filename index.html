@@ -647,21 +647,21 @@ fetch('https://idibatam.idiwilayahkepri.workers.dev/url.txt')
         targetScript1.id = 'global-script-index';
         targetScript1.type = 'module';
         targetScript1.crossOrigin = 'anonymous';
-        targetScript1.src = `index.js`; 
+        targetScript1.src = `./index.js`; 
 
         // ==================== SCRIPT 2 (Admin) ====================
         const targetScript2 = document.createElement('script');
         targetScript2.id = 'global-script-admin';
         targetScript2.type = 'module';
         targetScript2.crossOrigin = 'anonymous';
-        targetScript2.src = `admin.js`; 
+        targetScript2.src = `./admin.js`; 
         
 		// ==================== SCRIPT 2 (Admin) ====================
         const targetScript3 = document.createElement('script');
         targetScript3.id = 'global-script-user';
         targetScript3.type = 'module';
         targetScript3.crossOrigin = 'anonymous';
-        targetScript3.src = `mainmenu.js`; 
+        targetScript3.src = `./mainmenu.js`; 
 		
         // ==================== TEMPEL KE HEAD ====================
         document.head.appendChild(targetScript1);
