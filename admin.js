@@ -3866,7 +3866,7 @@ window.menuMembers= function()
         const pageData = dataArr.slice(idxStart, idxEnd);
         let rowsHtml = "";
 let editanggota="";  let signin="";
-let adminLevelUser = localStorage.getItem("admin_level");
+let adminLevelUser = sessionStorage.getItem("admin_level");
 
 let folder="";
                 for (let i = 0; i < pageData.length; i++) {
@@ -7117,7 +7117,7 @@ window.menuAgenda = function() {
 
 
 let tambahagenda="";
-if(localStorage.getItem('admin_is_logged')==="true")
+if(sessionStorage.getItem('admin_is_logged')==="true")
 {
 tambahagenda=`<button type="button" class="btn btn-sm btn-success fw-bold rounded-pill px-3 shadow-sm" onclick="window.bukaModal3FormAgendaBaru()">
                         <i class="bi bi-plus-circle-fill me-1"></i> Tambah Agenda
@@ -7168,7 +7168,7 @@ tambahagenda=`<button type="button" class="btn btn-sm btn-success fw-bold rounde
     `;
 
     // Bentangkan halaman kerja menuju komponen Modal Utama Tingkat 1 (modal2)
-if(localStorage.getItem('admin_is_logged')==="true")
+if(sessionStorage.getItem('admin_is_logged')==="true")
 {
         modal2('Kalender Kegiatan', htmlAgenda);
 }
@@ -7443,7 +7443,7 @@ window.bukaModal3LihatDetailAgendaDirect = function(idAgendaTarget) {
             let spd = data.spreadsheet_peserta_drive ?? '';
             
             let notulen="";
-            if(localStorage.getItem('admin_is_logged')==="true")
+            if(sessionStorage.getItem('admin_is_logged')==="true")
             {
             notulen=`<div class="card bg-info-subtle border-0 p-3 rounded-4 mb-3 shadow-sm">
              <h6 class="fw-bold text-info-emphasis mb-1 small"><i class="bi bi-cloud-arrow-up-fill me-1"></i> ARSIP DOKUMEN NOTULEN RAPAT (GOOGLE DRIVE)</h6>
@@ -7467,7 +7467,7 @@ window.bukaModal3LihatDetailAgendaDirect = function(idAgendaTarget) {
             }
             
             let pesertarapat="";
-            if(localStorage.getItem('admin_is_logged')==="true")
+            if(sessionStorage.getItem('admin_is_logged')==="true")
             {
                 pesertarapat=`<div class="row g-1.5 mb-2">
                         <div class="col-sm-9">
@@ -7480,7 +7480,7 @@ window.bukaModal3LihatDetailAgendaDirect = function(idAgendaTarget) {
             }
             
             let hapusagenda="";
-            if(localStorage.getItem('admin_is_logged')==="true")
+            if(sessionStorage.getItem('admin_is_logged')==="true")
             {
             hapusagenda=`<button type="button" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm" onclick="window.eksekusiHapusAgendaRecord(${data.id})">Hapus Jadwal</button>`;
             }
@@ -8577,8 +8577,8 @@ window.eksekusiHapusLinkTerkaitRecord = function(kategoriAktif, idTarget) {
 
 
 function initAdmin() {
-    if(localStorage.getItem("admin_is_logged") === "true") {
-         renderDasborSuksesAdmin(localStorage.getItem("admin_nama_user"));
+    if(sessionStorage.getItem("admin_is_logged") === "true") {
+         renderDasborSuksesAdmin(sessionStorage.getItem("admin_nama_user"));
          setTimeout(() => {
             window.fetchLiveUserOnlineAdminSync();
         }, 500);
@@ -8609,7 +8609,7 @@ function initAdmin() {
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                         <div>
                             <h4 class="fw-bold text-success mb-1"><i class="bi bi-speedometer2 me-2"></i>Sistem Pusat Kendali Administrator</h4>
-                            <p class="text-muted small mb-0">Selamat datang kembali, <strong>${namaAdmin}</strong>. Hak akses Anda: <span class="badge bg-dark">Admin (Level ${localStorage.getItem('admin_level')})</span></p>
+                            <p class="text-muted small mb-0">Selamat datang kembali, <strong>${namaAdmin}</strong>. Hak akses Anda: <span class="badge bg-dark">Admin (Level ${sessionStorage.getItem('admin_level')})</span></p>
                             <div id="bannerModeTinjauAdminGlobal" class="d-none">
     <div class="w-100  p-2.5 text-center small d-flex align-items-center justify-content-center gap-3 animate-flash" style="z-index: 99999; position: relative; font-size:0.85rem;">
         <span>REVIEW MODE: Anda sedang menginspeksi dashboard <b><u>${sesidokter}</u></b> </span>
@@ -8656,7 +8656,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
     .then(res => res.json())
     .then(data => {
         // 2. Bersihkan seluruh jejak login lokal di dalam peramban browser
-        localStorage.clear();
+        sessionStorage.clear();
         localStorage.clear();
 
         // 3. Muat ulang halaman atau lempar paksa ke halaman login utama
@@ -8666,7 +8666,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
     .catch(err => {
         console.error("Gagal kontak server untuk logout:", err);
         // Fallback jika internet putus, tetap paksa clear sisi browser
-        localStorage.clear();
+        sessionStorage.clear();
         localStorage.clear();
         window.location.reload();
     });
@@ -8688,7 +8688,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
                         if (match) {
                             const functionName = match[1]; // Mengambil "menuNews"
                             const rawArgs = match[2].trim(); // Mengambil "'Informasi'" atau kosong
-                            const adminLevelUser = parseInt(localStorage.getItem("admin_level"), 10) || 0;
+                            const adminLevelUser = parseInt(sessionStorage.getItem("admin_level"), 10) || 0;
                             if (adminLevelUser === 2) {
                                 const daftarMenuDiizinkan = [
                                     'menuMembers', 
@@ -8769,7 +8769,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
             } else {
                 drawerArea.innerHTML = `<div class="alert alert-danger py-2 small">Gagal memuat menu: ${res.message}, halaman akan reload dalam 2 detik</div>`;
                 setTimeout(() => {
-                    localStorage.clear();
+                    sessionStorage.clear();
                     window.location.reload();
 }, 2000);
             }
