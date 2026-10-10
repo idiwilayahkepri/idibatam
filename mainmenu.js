@@ -192,7 +192,12 @@ window.eksekusiFetchIuranMurni = function(nomorTelpon) {
 
     const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
 
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_pencarian_iuran&telpon=${encodeURIComponent(nomorTelpon)}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_pencarian_iuran&telpon=${encodeURIComponent(nomorTelpon)}`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         if (btnCari) {
@@ -796,10 +801,11 @@ window.hapuscicilanbertahap = function(idIuranTarget) {
     const payloadHapus = new FormData();
     payloadHapus.append("id", idIuranTarget);
 
-    // 2. Eksekusi tembakan AJAX menuju gerbang proses.php
     fetch(`${cleanEndpoint}/proses.php?aksi=batal_hapus_cicilan_bertahap`, {
         method: "POST",
-        body: payloadHapus
+        body: payloadHapus,
+        mode: "cors",              
+        credentials: "include"
     })
     .then(res => {
         if (!res.ok) throw new Error("HTTP error status " + res.status);
@@ -835,7 +841,13 @@ window.lihatAlasanDitolakCashBertahap = function(iuran_id,statusbaca) {
     `);
 
     // Tarik data detail iuran spesifik dari MySQL
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_iuran_spesifik&id=${iuran_id}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_iuran_spesifik&id=${iuran_id}`,
+	{
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         const wrapper = document.getElementById("containerAlasanDitolakUser");
@@ -939,7 +951,13 @@ window.bukaModal3VerifikasiCashBertahap = function(iuran_id) {
     `);
 
     // Tarik data detail iuran spesifik berdasarkan iuran_id
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_iuran_spesifik&id=${iuran_id}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_iuran_spesifik&id=${iuran_id}`,
+	{
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         const wrapper = document.getElementById("containerVerifikasiCashBertahap");
@@ -1062,7 +1080,9 @@ window.inisialisasiSubmitFormOtorisasiIuran = function() {
 
         fetch(`${cleanEndpoint}/proses.php?aksi=update_otorisasi_iuran_cash`, {
             method: "POST",
-            body: payload
+            body: payload,
+            mode: "cors",              
+            credentials: "include"    	
         })
         .then(res => res.json())
         .then(data => {
@@ -1139,7 +1159,6 @@ window.eksekusiUploadStrukKeGoogleDriveGas = function(idBarisIuran) {
 
             if (progressLabel) progressLabel.innerHTML = `<div class="spinner-border spinner-border-sm text-success me-1" role="status"></div> Sukses Drive! Sinkronisasi ID berkas ke database MySQL IDI...`;
 
-            // LANGKAH 2: Tembak ID Berkas dari Google Drive ke proses.php untuk disimpan di kolom 'img'
             const payloadMySQL = new FormData();
             payloadMySQL.append("id", idBarisIuran);
             payloadMySQL.append("google_file_id", res.fileId);
@@ -1149,7 +1168,9 @@ window.eksekusiUploadStrukKeGoogleDriveGas = function(idBarisIuran) {
             const cleanEndpoint = typeof endpoint !== 'undefined' ? endpoint.replace(/\/*\$/, '') : '';
             return fetch(`${cleanEndpoint}/proses.php?aksi=update_image_id_iuran`, {
                 method: "POST",
-                body: payloadMySQL
+                body: payloadMySQL,
+                mode: "cors",              
+                credentials: "include"
             });
         })
         .then(res => res.json())
@@ -1229,7 +1250,9 @@ window.eksekusiTambahCicilanCashBertahapMandiri = function(idAnggota, namaDokter
 
     fetch(`${cleanEndpoint}/proses.php?aksi=insert_transaksi_iuran`, {
         method: "POST",
-        body: payload
+        body: payload,
+        mode: "cors",              
+        credentials: "include"
     })
     .then(res => res.json())
     .then(data => {
@@ -1365,7 +1388,9 @@ ${khusususer}
 
             fetch(`${cleanEndpoint}/proses.php?aksi=update_keterangan_iuran_pending`, {
                 method: "POST",
-                body: payload
+                body: payload,
+                mode: "cors",              
+                credentials: "include"
             })
             .then(res => {
                 if (!res.ok) throw new Error("HTTP error " + res.status);
@@ -1443,7 +1468,9 @@ window.PembatalanPembayaranIuran = function(idIuran) {
 
     fetch(`${cleanEndpoint}/proses.php?aksi=hapus_iuran`, {
         method: "POST",
-        body: payload
+        body: payload,
+    mode: "cors",              
+    credentials: "include"
     })
     .then(res => {
         if (!res.ok) throw new Error("HTTP error " + res.status);
@@ -1649,7 +1676,9 @@ window.bukaFormBayarIuranModal2Direct = function(idAngg, namaDokter, telpon, tah
 
         fetch(`${cleanEndpoint}/proses.php?aksi=insert_transaksi_iuran`, {
             method: "POST",
-            body: payload
+			mode: "cors",
+            body: payload,
+			credentials: "include"
         })
         .then(res => res.json())
         .then(data => {
@@ -1779,7 +1808,9 @@ formUpload.addEventListener("submit", function(e) {
                 // Kirim tautan gambar kembali ke server PHP MySQL lokal Anda
                 fetch(`${cleanEndpoint}/proses.php?aksi=update_link_drive_iuran`, {
                     method: "POST",
-                    body: updatePayload
+                    body: updatePayload,
+					mode: "cors",              
+                    credentials: "include"
                 })
                 .then(res => res.json())
                 .then(finalRes => {
@@ -2003,7 +2034,9 @@ const formInsertManual = document.getElementById("formInsertTransaksiIuranMySQLM
         // ⚡ FIX CONCATENATE: Memasang backtick (`) pembungkus string URL fetch secara valid
         fetch(`${cleanEndpoint}/proses.php?aksi=insert_transaksi_iuran`, {
             method: "POST",
-            body: payloadManual
+            body: payloadManual,
+			mode: "cors",              
+            credentials: "include"
         })
         .then(response => {
             if (!response.ok) throw new Error("HTTP error " + response.status);
@@ -2335,7 +2368,12 @@ if(subKategori==="fellow") { subKategorix=subKategori+"ship"; uckatx=uckat+"ship
     const namadokter =	localStorage.getItem("idi_nama_dokter");
     const sessionLoginCheck = localStorage.getItem("idi_is_logged_in");
 
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_pencarian_${subKategori}&telpon=${encodeURIComponent(nomorTelpon)}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_pencarian_${subKategori}&telpon=${encodeURIComponent(nomorTelpon)}`,{
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         if (btnCari) {
@@ -2805,7 +2843,9 @@ window.bukaFormEditPengajuanDinamisModal2 = function(idTransaksi, dataTujuanEksi
         // Eksekusi pembaruan data menuju file proses.php
         fetch(`${cleanEndpoint}/proses.php?aksi=edit_transaksi_${subKategori}`, {
             method: "POST",
-            body: payload
+            body: payload,
+			mode: "cors",              // Memastikan mode CORS aktif lintas domain
+            credentials: "include"
         })
         .then(res => {
             if (!res.ok) throw new Error("HTTP error " + res.status);
@@ -3028,7 +3068,9 @@ if(subKategori=="ppds" || subKategori=="ppdssub" || subKategori=="fellow")
 
         fetch(`${cleanEndpoint}/proses.php?aksi=insert_transaksi_${subKategori}`, {
             method: "POST",
-            body: payload
+            body: payload,
+			mode: "cors",              
+            credentials: "include"
         })
         .then(res => res.json())
         .then(data => {
@@ -3279,7 +3321,9 @@ let valPermohonan = "";
             // ⚡ FIX CONCATENATE: Memasang backtick (`) pembungkus string URL fetch secara valid
             fetch(`${cleanEndpoint}/proses.php?aksi=update_berkas_${subKategori}`, { 
                 method: "POST", 
-                body: payload 
+                body: payload,
+				mode: "cors",              
+                credentials: "include"
             })
             .then(res => {
                 if (!res.ok) throw new Error("HTTP error " + res.status);
@@ -3600,7 +3644,6 @@ window.eksekusiSimpanTtdInlineModal3ViaGAS = function(folderIdTarget,subKategori
             return;
         }
 
-        // 💡 2. UPDATE KE DATABASE LOKAL: Kirim ID File TTD tersebut ke proses.php via POST URLSearchParams [INDEX]
         const currentEndpoint = typeof endpoint !== 'undefined' ? endpoint : '';
         const cleanEndpoint = currentEndpoint.endsWith('/') ? currentEndpoint.slice(0, -1) : currentEndpoint;
 
@@ -3611,7 +3654,9 @@ window.eksekusiSimpanTtdInlineModal3ViaGAS = function(folderIdTarget,subKategori
         fetch(`${cleanEndpoint}/proses.php?aksi=update_ttd_anggota`, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: payloadDb.toString()
+            body: payloadDb.toString(),
+			mode: "cors",              // Memastikan mode CORS aktif lintas domain
+            credentials: "include"
         })
         .then(dbRes => dbRes.json())
         .then(dbData => {
@@ -3823,7 +3868,9 @@ window.bukaPanduanDanInputFolderModal3Direct = function(idUserAnggotaAsli, idMut
 
         fetch(`${cleanEndpoint}/proses.php?aksi=update_folder_anggota`, {
             method: "POST",
-            body: payloadFolder
+            body: payloadFolder,
+			mode: "cors",              
+    credentials: "include"
         })
         .then(res => res.json())
         .then(data => {
@@ -4138,7 +4185,9 @@ window.eksekusiHapusDrafMutasiMySQL = function(idMutasiTarget, kotaTujuan, subKa
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: payloadHapus.toString()
+        body: payloadHapus.toString(),
+		mode: "cors",              
+        credentials: "include"
     })
     .then(res => {
         if (!res.ok) throw new Error("HTTP error " + res.status);
@@ -4327,8 +4376,12 @@ window.bukaModal2ListBaktiSosial = function() {
 		generateMainMenuDropdownHtml('Daftar Agenda Bakti Sosial');
     }
 
-    // 2. Jalankan FETCH AJAX mengambil data array baksos dari proses.php
- fetch(`${cleanEndpoint}/proses.php?aksi=get_list_baksos`)
+ fetch(`${cleanEndpoint}/proses.php?aksi=get_list_baksos`,{
+ method: "POST",
+    mode: "cors",              // Memastikan mode CORS aktif lintas domain
+    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
+    body: payload
+ })
     .then(res => res.json())
     .then(res => {
         if (res.status !== 'success') throw new Error(res.message);
@@ -4440,7 +4493,12 @@ window.bukaModal3DetailBaktiSosialPeserta = function (idSeminarBaksos) {
     `);
     generateMainMenuDropdownHtml('Data Peserta');
     // Ambil detail spreadsheet_id_peserta terlebih dahulu dari server lokal php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_baksos_peserta&id=${idSeminarBaksos}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_baksos_peserta&id=${idSeminarBaksos}`, {
+	method: "POST",
+    mode: "cors",              // Memastikan mode CORS aktif lintas domain
+    credentials: "include",    // 💡 KUNCI UTAMA: Memaksa browser mengirim & menerima Cookie/Session PHP
+    body: payload
+	})
         .then(res => res.json())
         .then(res => {
             if (res.status !== 'success') throw new Error(res.message);
@@ -4654,8 +4712,12 @@ window.bukaModal3DetailBaktiSosialDirect = function(idSeminarBaksos) {
         `);
     }
 
-    // Tembak request parameter ID menuju endpoint aksi proses.php
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_baksos&id=${idSeminarBaksos}`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_detail_baksos&id=${idSeminarBaksos}`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         if (res.status !== 'success') throw new Error(res.message);
@@ -4717,7 +4779,12 @@ window.generateMainMenuDropdownHtml = function(currentTitleText) {
     const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
     currentTitleText = currentTitleText.replace(/'/, '');
 
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_navmenu`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_navmenu`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",    
+    body: payload
+	})
     .then(res => res.json())
     .then(res => {
         if (res.status === 'success' && res.data) {
@@ -5010,7 +5077,12 @@ if (navContainer4) {
     //});
 
     // Menarik data menu langsung dari server PHP via AJAX Fetch
-    fetch(`${cleanEndpoint}/proses.php?aksi=get_navmenu`)
+    fetch(`${cleanEndpoint}/proses.php?aksi=get_navmenu`, {
+	method: "POST",
+    mode: "cors",              
+    credentials: "include",   
+    body: payload
+	})
     .then(response => {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
