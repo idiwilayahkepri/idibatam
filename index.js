@@ -254,7 +254,7 @@ bodyElement.innerHTML = adminlogin;
                     localStorage.setItem("admin_is_logged", "true");
                     localStorage.setItem("admin_nama_user", data.nama_admin);
                     localStorage.setItem("admin_level", data.level_admin);
-                    //window.location.reload();
+                    window.location.reload();
                 } else {
                     alertContainer.innerHTML = `
                         <div class="alert alert-danger py-2 small d-flex align-items-center gap-2" role="alert">
