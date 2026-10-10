@@ -2,7 +2,7 @@ import { APP_CONFIG } from './config.js';
 const endpoint = `${APP_CONFIG.API_URL}`; 
 
 function initAplikasi() {
-//if(sessionStorage.getItem("admin_is_logged") === "true") { pemicuBukaPortalAdminDashboard(); }
+//if(localStorage.getItem("admin_is_logged") === "true") { pemicuBukaPortalAdminDashboard(); }
 document.getElementById("admin").addEventListener("click", function(e) { e.preventDefault(); 
 pemicuBukaPortalAdminLogin(); 
 });
@@ -115,7 +115,7 @@ function togglePasswordVisibility(fieldId, btnElement) {
 
 function muatDataHeadlineMasonry() {
     const container = document.getElementById('masonryContainer') || document.getElementById('masonryInfoContainer');
-    if(sessionStorage.getItem("admin_is_logged") === "true") {
+    if(localStorage.getItem("admin_is_logged") === "true") {
          document.getElementById('icon_admin').style.display='none';
     }
     if (container) {
@@ -251,9 +251,9 @@ bodyElement.innerHTML = adminlogin;
 				alert(data.status);
                 if(data.status === "success") {
                     alertContainer.innerHTML = "";
-                    sessionStorage.setItem("admin_is_logged", "true");
-                    sessionStorage.setItem("admin_nama_user", data.nama_admin);
-                    sessionStorage.setItem("admin_level", data.level_admin);
+                    localStorage.setItem("admin_is_logged", "true");
+                    localStorage.setItem("admin_nama_user", data.nama_admin);
+                    localStorage.setItem("admin_level", data.level_admin);
                     window.location.reload();
                 } else {
                     alertContainer.innerHTML = `
