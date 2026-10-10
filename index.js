@@ -77,6 +77,7 @@ function prosesLogout(e) {
 		method: "POST",
     mode: "cors",              
     credentials: "include"
+	})
     .then(res => {
         if (!res.ok) throw new Error("HTTP error dari server: " + res.status);
         return res.json();
