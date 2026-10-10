@@ -8770,7 +8770,7 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
                 drawerArea.innerHTML = `<div class="alert alert-danger py-2 small">Gagal memuat menu: ${res.message}, halaman akan reload dalam 2 detik</div>`;
                 setTimeout(() => {
                     //localStorage.clear();
-                    window.location.reload();
+                    //window.location.reload();
 }, 2000);
             }
         })
