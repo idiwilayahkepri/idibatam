@@ -134,8 +134,7 @@ function muatDataHeadlineMasonry() {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_headline`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(response => {
         if (!response.ok) {
