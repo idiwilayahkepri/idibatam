@@ -39,8 +39,7 @@ function periksaSesiLogin() {
             fetch(`${cleanEndpoint}/proses.php?aksi=get_avatar_navigasi&id_user=${idUser}`, {
 			method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 			})
             .then(res => res.json())
             .then(res => {
