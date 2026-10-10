@@ -305,8 +305,7 @@ function bukaModalFullscreenProfil(nama) {
     fetch(`${cleanEndpoint}/proses.php?aksi=get_profil&whatsapp=${userWA}`, {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(response => {
         if (!response.ok) {
@@ -928,7 +927,7 @@ formLogin.addEventListener("submit", function(event) {
     })
 	.catch(() => {
 
-              console.error("Gagal melakukan login:", err);   
+              console.error("Gagal melakukan login:");   
             });
 });
 
