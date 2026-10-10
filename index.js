@@ -76,9 +76,7 @@ function prosesLogout(e) {
     fetch(`${cleanEndpoint}/proses.php?aksi=eksekusi_logout_total_server`, {
 		method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
-    })
+    credentials: "include"
     .then(res => {
         if (!res.ok) throw new Error("HTTP error dari server: " + res.status);
         return res.json();
@@ -591,8 +589,7 @@ if (!window.globalHeadlineWebsiteCache) return;
             fetch(`${cleanEndpoint}/proses.php?aksi=get_gallery_admin`,{
 			method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 			})
             .then(response => response.json())
             .then(res => {
@@ -736,8 +733,7 @@ generalBody.innerHTML = `
         fetch(`${cleanEndpoint}/proses.php?aksi=${aksiApiUrl}&kategori=${info.kategori}`,{
 		method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 		})
         .then(response => response.json())
         .then(sidebarRes => {
@@ -945,8 +941,7 @@ window.updateKontenKiriModalDirect = function(idTarget, asalTabel) {
     fetch(`${cleanEndpoint}/proses.php?aksi=${aksiUrl}&id_tunggal=${idTarget}`,{
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(res => {
@@ -1037,8 +1032,7 @@ function buatCaptchaBaru() {
     fetch(endpoint+'proses.php?aksi=get_captcha',{
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(response => response.json())
     .then(data => {
