@@ -8720,8 +8720,9 @@ document.getElementById("btnLogOutAdmin").addEventListener("click", function(e) 
             }
         });
 
-        // LIVE AJAX FETCH MAINMENU DARI MYSQL TABLE VIA PHP
-        fetch(endpoint + "admin.php?aksi=get_mainmenu")
+        const cleanEndpoint = endpoint.endsWith('/') ? endpoint.slice(0, -1) : endpoint;
+         
+        fetch(cleanEndpoint + "/admin.php?aksi=get_mainmenu")
         .then(res => res.json())
         .then(res => {
 			alert(res.status);
