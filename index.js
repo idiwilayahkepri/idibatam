@@ -1214,8 +1214,7 @@ function muatSatuFotoAcakHeadlineDrive() {
     fetch(endpoint + 'proses.php?aksi=get_headline_admin', {
 	method: "POST",
     mode: "cors",              
-    credentials: "include",    
-    body: payload
+    credentials: "include"
 	})
     .then(res => res.json())
     .then(headlineRes => {
