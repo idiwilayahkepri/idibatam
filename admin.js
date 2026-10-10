@@ -4162,7 +4162,12 @@ menuMembers();
     };
 
     // AJAX FETCH: Hubungkan langsung ke endpoint members.php MySQL
-    fetch(endpoint + 'members.php?aksi=list_members')
+    fetch(endpoint + 'members.php?aksi=list_members', {
+    method: "POST",
+    mode: 'cors',
+    credentials: 'include'
+		
+	})
     .then(response => {
         if (!response.ok) throw new Error("HTTP error " + response.status);
         return response.json();
